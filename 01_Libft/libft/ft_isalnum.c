@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 14:44:38 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/12 16:14:18 by mergarci         ###   ########.fr       */
+/*   Created: 2024/03/12 14:51:59 by mergarci          #+#    #+#             */
+/*   Updated: 2024/03/12 14:53:59 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_isalnum(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
 	return (0);
 }
@@ -23,9 +23,9 @@ int	ft_isalpha(int c)
 {
 	int	c;
 
-	c = 81;
-	printf("valor de isalpha: %d\n", isalpha(c));
-	printf("valor de ft_isalpha: %d\n", ft_isalpha(c));
-
+	c = 47;
+	printf("valor de isalnum: %d\n", isalnum(c));
+	printf("valor de ft_isalnum: %d\n", ft_isalnum(c));
+	
 	return 1;
 }*/

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 14:44:38 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/12 16:14:18 by mergarci         ###   ########.fr       */
+/*   Created: 2024/03/12 15:05:45 by mergarci          #+#    #+#             */
+/*   Updated: 2024/03/12 15:26:11 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_isprint(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }
-
-/*int	main(void)
+/*
+int	main(void)
 {
 	int	c;
 
-	c = 81;
-	printf("valor de isalpha: %d\n", isalpha(c));
-	printf("valor de ft_isalpha: %d\n", ft_isalpha(c));
-
+	c = 32;
+	printf("valor de isprint: %d\n", isprint(c));
+	printf("valor de ft_isprint: %d\n", ft_isprint(c));
+	
 	return 1;
 }*/

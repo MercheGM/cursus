@@ -1,15 +1,24 @@
-myprog : ft_isalpha.o ft_isdigit.o main.o
-	cc -Wall -Werror -Wextra  ft_isalpha.c ft_isdigit.c main.c -o myprog
+CC = gcc
+NAME = libft.a
+SRC = 	ft_isalpha.c ft_isdigit.c \
+		ft_isalnum.c ft_isascii.c \
+		ft_isprint.c ft_strlen.c \
+		ft_memset.c
+CFLAGS = -Wall -Werror -Wextra
 
-ft_isalpha.o: ft_isalpha.c libft.h
-	cc -c ft_isalpha.c
+OBJS = $(SRC:.c=.o)
 
-ft_isdigit.o: ft_isdigit.c libft.h
-	cc -c ft_isdigit.c
+all : $(NAME)
 
-main.o: main.c libft.h
-	cc -c main.c
+$(NAME) : $(OBJS)
+	$(AR) rcs $(NAME) $(OBJS)
 
-.PHONY : clean
+re: 
+
+fclean:
+	@rm -f *.o $(NAME)
+
 clean:
-	rm -f *.o myprog
+	@rm -f *.o
+
+.PHONY : fclean

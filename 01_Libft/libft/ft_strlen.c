@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 14:44:38 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/12 16:14:18 by mergarci         ###   ########.fr       */
+/*   Created: 2024/02/16 12:27:21 by mergarci          #+#    #+#             */
+/*   Updated: 2024/03/12 17:53:00 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-int	ft_isalpha(int c)
+size_t	ft_strlen(const char *s)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
-	return (0);
+	size_t	cont;
+
+	cont = 0;
+	while (s[cont] != '\0')
+	{
+		cont++;
+	}
+	return (cont);
 }
 
 /*int	main(void)
 {
-	int	c;
+	char 	*str = "holi mundito";
 
-	c = 81;
-	printf("valor de isalpha: %d\n", isalpha(c));
-	printf("valor de ft_isalpha: %d\n", ft_isalpha(c));
-
-	return 1;
-}*/
+	printf("La cadena \"%s\" tiene %d caracteres\n", str, ft_strlen(str));
+}	*/
