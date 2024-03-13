@@ -12,22 +12,35 @@
 
 #include "libft.h"
 
+//# include <ctype.h>
+//# include <stdio.h>
+//# include <string.h>
+//#include <stdlib.h>
+
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t cont;
+	size_t 			cont;
+	unsigned char	*ptr;
 
-	printf("%zu\n", len);
+	ptr = b;
 	cont = 0;
-	while (cont < len && b != NULL)
-	{
-		printf("******");
-		printf(" %c ", *(char*)b);
-		printf("%lu ******", sizeof(len));
-		b = &c;
-		cont++;
-		//b = b + len;
-		printf(" %d \n", b);
-	}
-	(void)c;
+	while (cont < len)
+		ptr[cont++] = (unsigned char)c;
 	return (b);
 }
+
+/*int	main(void)
+{
+	int	c;
+	char str1[50] = "GeeksForGeeks is for programming geeks.";
+	int int1[4] = {1, 2, 3, 4}; 
+	char str2[50] = "GeeksForGeeks is for programming geeks.";
+	printf("Before memset(): %s\n", str1);
+	printf("Before memset(): %s\n", str2);
+	memset(str1 + 1, 'x', 6*sizeof(char));
+	ft_memset(str2 + 1, 'x', 6*sizeof(char));
+	printf("After memset():  %s\n", str1);
+	printf("After ft_memset():  %s\n", str2);
+
+	return (0);
+}*/

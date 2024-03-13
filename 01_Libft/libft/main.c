@@ -42,8 +42,8 @@ int	main(void)
 	char str2[50] = "GeeksForGeeks is for programming geeks.";
 	printf("Before memset(): %s\n", str1);
 	printf("Before memset(): %s\n", str2);
-	memset(str1 + 1, '.', 8*sizeof(char));
-	ft_memset(str2 + 1, '.', 8*sizeof(char));
+	memset(str1 + 1, '-', 8*sizeof(char));
+	ft_memset(str2 + 1, '-', 8*sizeof(char));
 	printf("After memset():  %s\n", str1);
 	printf("After ft_memset():  %s\n", str2);
 
