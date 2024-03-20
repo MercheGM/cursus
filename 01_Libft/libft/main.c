@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:37:17 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/15 18:04:45 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:25:03 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,27 +93,31 @@ int	main(void)
 
 
 
-	char	str[40] = "ABC";
-	char	dst0[40] = "abcdef";
-	char	dst1[40] = "abcdef";
+	char	str[40] = "123456";
+	char	dst0[40] = "";
+	char	dst1[40] = "";
 	int n;
+	size_t fun;
+	size_t my;
 	
-	n = 10;
-	strlcpy(dst0, str, n);
-	ft_strlcpy(dst1, str,n);
+	n = 0;
+	fun = strlcpy(dst0, str, n);
+	my = ft_strlcpy(dst1, str,n);
 	printf("La cadena es: %s\n", str);
-	printf("Resultado de strlcpy: %s\n", dst0);
-	printf("Resultado de ft_strlcpy: %s\n", dst1);
+	printf("Resultado de strlcpy: %lu, %s\n", fun, dst0);
+	printf("Resultado de ft_strlcpy: %lu, %s\n", my, dst1);
 	printf("diferencia de resultados: %d\n", strcmp(dst0, dst1));
-*/
-	char 			str2[100] = "pqrstuvwxyz";
-	char			str1[100] = "abcd";
-	char			str3[100] = "abcd";
+	printf("comparacion resultados: %lu\n", fun - my);
+
+	char 			str2[100];
+	char			str1[100] = "lorem ipsum dolor sit amet";
+	char			str3[100] = "lorem ipsum dolor sit amet";
 	size_t fun;
 	size_t my;
 	unsigned int	m;
-	printf("strlen de input: %zu\n",ft_strlen(str2));
-	m = 0;
+	str2[1] = 'a';
+	//printf("strlen de input: %zu\n",ft_strlen(str2));
+	m = 15;
 	printf("La cadena src es: %s\n", str2);
 	printf("La cadena dst es: %s\n", str1);
 	fun = strlcat(str1, str2, m);
@@ -122,5 +126,19 @@ int	main(void)
 	printf("Resultado de mi funcion es: %lu, %s\n", my, str3);
 	printf("comparacion funciones: %d\n", strcmp(str1, str3));
 	printf("comparacion resultados: %lu\n", fun - my);
+	
+
+	char	str1[100] = "the cake is a lie\0 holaaa!";
+	char	str2[100] = "the cake is a lie\0 holaaa!";
+	int c = 'e' + 256;
+	char *fun = strchr(str1, c);
+	char *my = ft_strchr(str2, c);
+	
+	printf("Cadena: %s\n", str1);
+	printf("Resultado de la funcion es: %s\n", fun);
+	printf("Resultado de mi funcion es: %s\n", my);
+	printf("comparacion funciones: %d\n", strcmp(fun, my));
+	*/
+
 	return (0);
 }
