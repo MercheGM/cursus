@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:11:46 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/15 18:28:39 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:30:46 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t 			cont;
+	size_t			cont;
 	unsigned char	*ptr;
 
 	ptr = b;
