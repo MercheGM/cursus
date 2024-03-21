@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:37:17 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/20 19:25:03 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:47:58 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,48 @@ int	main(void)
 	printf("Resultado de la funcion es: %s\n", fun);
 	printf("Resultado de mi funcion es: %s\n", my);
 	printf("comparacion funciones: %d\n", strcmp(fun, my));
-	*/
+
+
+	char	str1[100] = "the cake is a lie";
+	char	str2[100] = "the cake is a lie";
+	int c = 1024;
+	char *fun = strrchr(str1, c);
+	char *my = ft_strrchr(str2, c);
+	
+	printf("Cadena: %s\n", str1);
+	printf("Resultado de la funcion es: %s\n", fun);
+	printf("Resultado de mi funcion es: %s\n", my);
+	printf("comparacion funciones: %d\n", strcmp(fun, my));
+	
+
+	char	str1[100] = "holi hola\200";
+	char 	str2[100] = "holi hola\0";
+	int n;
+
+	n = 15;
+	printf("La cadena 1 es: %s\n", str1);
+	printf("La cadena 2 es: %s\n", str2);
+	printf("Resultado de la funcion es: %d\n", strncmp(str1,str2,n));
+	printf("El resultado de mi funcion es: %d\n", ft_strncmp(str1, str2, n));
+*/
+
+	//char	str1[100] = "the ca\6ke is a lie\0 holaaa!";
+	//char	str2[100] = "the ca\6ke is a lie\0 holaaa!";
+	char str1[] = {0, 1, 2 ,3 ,4 ,5};
+	char str2[] = {0, 1, 2 ,3 ,4 ,5};
+	int c = 2;
+	size_t n = 3;
+	char *fun = memchr(str1, c, n);
+	char *my = ft_memchr(str2, c, n);
+	
+	printf("Cadena: %p\n", str1);
+	printf("Antes de funciones: str1: %p str2: %p\n", str1, str2);
+
+	printf("Resultado de la funcion es: %p\n", fun);
+	printf("Resultado de mi funcion es: %p\n", my);
+	printf("Despues de funciones: str1: %p str2: %p\n", fun, my);
+
+	printf("comparacion funciones: %d\n", strcmp(fun, my));
 
 	return (0);
 }
