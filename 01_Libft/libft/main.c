@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:37:17 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/21 14:47:58 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:59:08 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int	main(void)
 	printf("La cadena 2 es: %s\n", str2);
 	printf("Resultado de la funcion es: %d\n", strncmp(str1,str2,n));
 	printf("El resultado de mi funcion es: %d\n", ft_strncmp(str1, str2, n));
-*/
+
 
 	//char	str1[100] = "the ca\6ke is a lie\0 holaaa!";
 	//char	str2[100] = "the ca\6ke is a lie\0 holaaa!";
@@ -181,5 +181,46 @@ int	main(void)
 
 	printf("comparacion funciones: %d\n", strcmp(fun, my));
 
+
+	char	str1[100] = "holi hola\200";
+	char 	str2[100] = "holi hola\0";
+	int n;
+
+	n = 15;
+	printf("La cadena 1 es: %s\n", str1);
+	printf("La cadena 2 es: %s\n", str2);
+	printf("Resultado de la funcion es: %d\n", memcmp(str1,str2,n));
+	printf("El resultado de mi funcion es: %d\n", ft_memcmp(str1, str2, n));
+
+
+
+	char *largestring = "12335456789";
+    char *smallstring = "12335456789";
+    char *fun;
+	char *my;
+	size_t n = ft_strlen(largestring);
+	
+    fun = strnstr(largestring, smallstring, n);
+	my = ft_strnstr(largestring, smallstring, n);
+	printf("Resultado strnstr: %s\n", fun);
+	printf("Resultado ft_strnstr: %s\n", my);
+	printf("comparacion funciones: %d\n", strcmp(fun, my));
+	
+	char str[] = "\t-1234ab567";
+	printf("Resultado de \"%s\" con la funcion atoi: %d\n", str, atoi(str));
+	printf("Resultado de \"%s\" con la func ft_atoi: %d\n", str, ft_atoi(str));
+	
+	int		count = 1;
+	int		n = 8;
+	char	*pt = calloc(count, sizeof(int));
+	char	*ptr = ft_calloc(count, sizeof(int));
+	int		i = 0;
+	while (i++ < n*count)m
+		printf("%d: %d %d\n", i, pt[i], ptr[i]);
+			*/
+	char *ptr = "holi!!";
+	printf("ptr: %s\n", ptr);
+	char *b = ft_strdup(ptr);
+	printf("b: %s\n", b);
 	return (0);
 }
