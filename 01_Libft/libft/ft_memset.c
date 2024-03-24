@@ -6,20 +6,15 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:11:46 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/12 19:07:54 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:30:46 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//# include <ctype.h>
-//# include <stdio.h>
-//# include <string.h>
-//#include <stdlib.h>
-
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t 			cont;
+	size_t			cont;
 	unsigned char	*ptr;
 
 	ptr = b;
