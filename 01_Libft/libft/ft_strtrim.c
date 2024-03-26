@@ -36,7 +36,7 @@ char    *ft_strtrim(char const *s1, char const *set)
     ft_strlcpy(ptr, s1, (j - i -1));
     return (ptr);
 }
-
+/*
 int main()
 {
     char *str = "atodosa6 ";
@@ -46,4 +46,4 @@ int main()
     printf("%s", new);
 
     return 0;
-}
+}*/

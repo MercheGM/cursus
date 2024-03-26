@@ -62,11 +62,11 @@ char *ft_itoa(int n)
 }
 
 
-int main()
+/*int main()
 {
     char *str;
     int n = 534578;
     str = ft_itoa(n);
     printf("%d\n%s\n", n, str);
     return 0;
-}
+}*/
