@@ -23,12 +23,9 @@ void    ft_putnbr_fd(int n, int fd)
 /*int main(void)
 {
     int fd;
-    int n = -23456; 
-    //char *c = "hola hola";
+    int n = -2147483648; 
 
-    //fd = 0;
     fd = open("test.txt", O_TRUNC | O_RDWR | O_CREAT, 0600);
-    //printf("%d", fd);
     if (fd >= 0)
         ft_putnbr_fd(n, fd);
 

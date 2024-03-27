@@ -18,9 +18,13 @@ SRC = 	ft_isalpha.c ft_isdigit.c \
 		ft_striteri.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putendl_fd.c \
 		ft_putnbr_fd.c
+SRC_BONUS = ft_lstnew_bonus.c \
+			ft_lstadd_front_bonus.c
+
 CFLAGS = -Wall -Werror -Wextra
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRC_BONUS:.c=.o)
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
 all : $(NAME)
 
@@ -35,4 +39,8 @@ fclean:
 clean:
 	@rm -f *.o
 
-.PHONY : all clean fclean re
+bonus:
+	$(NAME) : $(OBJS) $(OBJS_BONUS)
+	$(AR) rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+
+.PHONY : clean fclean re
