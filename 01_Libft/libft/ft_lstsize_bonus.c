@@ -27,7 +27,7 @@ int    ft_lstsize(t_list *lst)
     return (cont);
 }
 
-int main(void)
+/*int main(void)
 {
     t_list *lista;
     t_list *new;
@@ -43,4 +43,4 @@ int main(void)
     ft_print_lst(&lista); 
     printf("numeros de elementos en la lista: %d\n", ft_lstsize(lista));
     return (1);
-}
+}*/

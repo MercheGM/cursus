@@ -19,7 +19,10 @@ SRC = 	ft_isalpha.c ft_isdigit.c \
 		ft_putstr_fd.c ft_putendl_fd.c \
 		ft_putnbr_fd.c
 SRC_BONUS = ft_lstnew_bonus.c \
-			ft_lstadd_front_bonus.c
+			ft_lstadd_front_bonus.c \
+			ft_lst_size-bonus.c \
+			ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c
 
 CFLAGS = -Wall -Werror -Wextra
 
