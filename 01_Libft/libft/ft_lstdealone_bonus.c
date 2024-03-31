@@ -12,14 +12,10 @@
 
 #include "libft_bonus.h"
 
-void ft_del(void *content)
+static void ft_del(void *content)
 {
-    //printf("entramos en ft_del %s\n", (char *)content);
-    if (content != NULL){
-        //printf("bu!!\n");
+    if (content != NULL)
         free(content);
-    }
-    //printf("salimos de ft_del %s\n", (char *)content);
 }
 
 

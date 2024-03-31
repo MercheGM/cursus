@@ -27,7 +27,7 @@ void    ft_lstclear(t_list **lst, void (*del)(void *))
     }
 }
 
-int main(void)
+/*int main(void)
 {
     t_list *lista;
     t_list *new;
@@ -49,4 +49,4 @@ int main(void)
     ft_print_lst(&lista); 
 
     return (1);
-} 
+} */

@@ -12,7 +12,7 @@
 
 #include "libft_bonus.h"
 
-void    *ft_strtoupper(void *s)
+static void    *ft_strtoupper(void *s)
 {
     char *str;
     int i;
@@ -29,6 +29,13 @@ void    *ft_strtoupper(void *s)
     }
     return ((void *)str_upper);
 }
+
+static void ft_del(void *content)
+{
+    if (content != NULL)
+        free(content);
+}
+
 t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
     t_list *list;

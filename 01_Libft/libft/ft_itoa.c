@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_digit(int nb)
+static int	ft_digit(int nb)
 {
 	int	iter;
 
@@ -25,7 +25,7 @@ int	ft_digit(int nb)
 	return (iter);
 }
 
-char *ft_strnbr(int digits, int num_aux, int is_negative, int is_overflow)
+static char *ft_strnbr(int digits, int num_aux, int is_negative, int is_overflow)
 {
     char    *ptr;
     ptr = ft_calloc(digits + 1, sizeof(char));

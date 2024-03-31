@@ -12,7 +12,7 @@
 
 #include "libft_bonus.h"
 
-void    ft_print_content(void *s)
+static void    ft_print_content(void *s)
 {
     printf("\t%s\n",(char *)s);
 }

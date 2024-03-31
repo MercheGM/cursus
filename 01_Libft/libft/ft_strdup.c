@@ -31,3 +31,13 @@ char	*ft_strdup(const char *s1)
 	ptr[i] = '\0';
 	return (ptr);
 }
+
+/*
+int main(void)
+{
+	char *ptr = "holi!!";
+	printf("ptr: %s\n", ptr);
+	char *b = ft_strdup(ptr);
+	printf("b: %s\n", b);
+	return 1;
+}*/
