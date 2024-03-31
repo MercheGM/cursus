@@ -16,16 +16,15 @@ void    ft_lstadd_back(t_list **lst, t_list *new)
 {
     t_list *aux;
 
-    aux = *lst;
-    while(aux)
-    {  
-        if (aux->next ==NULL)
-        {
-            aux->next = new;
-            break;
-        }
-        aux = aux->next;
+    if (*lst == NULL)
+    {
+        *lst = new;
+        return ;
     }
+    aux = *lst;
+    while(aux->next)  
+        aux = aux->next;
+    aux->next = new;
 }
 
 /*int main(void)
