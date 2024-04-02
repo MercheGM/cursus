@@ -1,3 +1,6 @@
 .DS_Store
 a.out
 .vscode/*
+a.exe
+*.h.gch
+*.txt

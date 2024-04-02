@@ -18,9 +18,15 @@ SRC = 	ft_isalpha.c ft_isdigit.c \
 		ft_striteri.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putendl_fd.c \
 		ft_putnbr_fd.c
+<<<<<<< HEAD
 #SRC_BONUS = ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstsize_bonus.c \
+=======
+SRC_BONUS = ft_lstnew_bonus.c \
+			ft_lstadd_front_bonus.c \
+			ft_lst_size-bonus.c \
+>>>>>>> a0fc28e39819969a5b6726d3d0adaab1e428dac2
 			ft_lstlast_bonus.c \
 			ft_lstadd_back_bonus.c \
 			ft_lstdealone_bonus.c \
@@ -30,8 +36,13 @@ SRC = 	ft_isalpha.c ft_isdigit.c \
 
 CFLAGS = -Wall -Werror -Wextra
 
+<<<<<<< HEAD
 OBJS = $(SRC:.c=.o)
 #OBJS_BONUS = $(SRC_BONUS:.c=.o)
+=======
+OBJS = $(SRC_BONUS:.c=.o)
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
+>>>>>>> a0fc28e39819969a5b6726d3d0adaab1e428dac2
 
 #all : bonus
 all : $(NAME) 
@@ -48,7 +59,15 @@ fclean:
 clean:
 	@rm -f *.o
 
+<<<<<<< HEAD
 re: fclean all
 
 #.PHONY : all bonus clean fclean re
 .PHONY : all clean fclean re
+=======
+bonus:
+	$(NAME) : $(OBJS) $(OBJS_BONUS)
+	$(AR) rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+
+.PHONY : clean fclean re
+>>>>>>> a0fc28e39819969a5b6726d3d0adaab1e428dac2
