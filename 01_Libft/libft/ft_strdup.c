@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 17:27:49 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/22 18:06:10 by mergarci         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   ft_strdup.c										:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/03/22 17:27:49 by mergarci		  #+#	#+#			 */
+/*   Updated: 2024/03/22 18:06:10 by mergarci		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -31,3 +31,13 @@ char	*ft_strdup(const char *s1)
 	ptr[i] = '\0';
 	return (ptr);
 }
+
+/*
+int main(void)
+{
+	char *ptr = "holi!!";
+	printf("ptr: %s\n", ptr);
+	char *b = ft_strdup(ptr);
+	printf("b: %s\n", b);
+	return 1;
+}*/

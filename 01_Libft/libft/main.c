@@ -1,16 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:37:17 by mergarci          #+#    #+#             */
-/*   Updated: 2024/03/22 17:59:08 by mergarci         ###   ########.fr       */
-/*                                                                            */
+/*														:::	  ::::::::   */
+/*   main.c											 :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/03/11 16:37:17 by mergarci		  #+#	#+#			 */
+/*   Updated: 2024/03/22 17:59:08 by mergarci		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_bonus.h"
 
 #include <memory.h>
 #include <string.h>
@@ -59,9 +57,9 @@ int	main(void)
 	ft_bzero(str2 + 1, 2*sizeof(char));
 	printf("After bzero():  %s\n", str1);
 	printf("After ft_bzero():  %s\n", str2);
-    c = 0;
-    while(c < 20)
-        printf("%c", str2[c++]);
+	c = 0;
+	while(c < 20)
+		printf("%c", str2[c++]);
 
 
 	char str[] = "jelou55";
@@ -195,12 +193,12 @@ int	main(void)
 
 
 	char *largestring = "12335456789";
-    char *smallstring = "12335456789";
-    char *fun;
+	char *smallstring = "12335456789";
+	char *fun;
 	char *my;
 	size_t n = ft_strlen(largestring);
 	
-    fun = strnstr(largestring, smallstring, n);
+	fun = strnstr(largestring, smallstring, n);
 	my = ft_strnstr(largestring, smallstring, n);
 	printf("Resultado strnstr: %s\n", fun);
 	printf("Resultado ft_strnstr: %s\n", my);
@@ -217,10 +215,36 @@ int	main(void)
 	int		i = 0;
 	while (i++ < n*count)m
 		printf("%d: %d %d\n", i, pt[i], ptr[i]);
-			*/
+		
 	char *ptr = "holi!!";
 	printf("ptr: %s\n", ptr);
 	char *b = ft_strdup(ptr);
 	printf("b: %s\n", b);
-	return (0);
+
+
+	char *str = "";
+	char * dst;
+	dst = ft_substr(str, 1 , 1);
+	printf("str: %p, %s %lu\n", str, str, ft_strlen(str));
+	printf("dst: %p, %s %lu\n", dst, dst, ft_strlen(dst));
+	//system("leaks a.out");
+
+
+
+	char *str = " lorem ipsum dolor sit amet";
+	char *set = "l ";
+	char *new = ft_strtrim(str, set);
+	printf("%s, len: %zu", new, ft_strlen(new));
+	*/
+	char *str = "sddgfjfhd";
+	char **array;
+	int cont = 0;
+	array = ft_split(str, 'd');
+	while (array[cont] != NULL)
+	{
+		printf(".%s.\n", array[cont]);
+		cont++;
+	} 
+
+	return (1);
 }
