@@ -149,18 +149,18 @@ int	main(void)
 	printf("Resultado de mi funcion es: %s\n", my);
 	printf("comparacion funciones: %d\n", strcmp(fun, my));
 	
-
-	char	str1[100] = "holi hola\200";
-	char 	str2[100] = "holi hola\0";
+*/
+	char	*str1 = "";
+	char 	*str2 = "holi hola";
 	int n;
 
-	n = 15;
+	n = 1;
 	printf("La cadena 1 es: %s\n", str1);
 	printf("La cadena 2 es: %s\n", str2);
 	printf("Resultado de la funcion es: %d\n", strncmp(str1,str2,n));
 	printf("El resultado de mi funcion es: %d\n", ft_strncmp(str1, str2, n));
 
-
+/*
 	//char	str1[100] = "the ca\6ke is a lie\0 holaaa!";
 	//char	str2[100] = "the ca\6ke is a lie\0 holaaa!";
 	char str1[] = {0, 1, 2 ,3 ,4 ,5};
@@ -235,16 +235,26 @@ int	main(void)
 	char *set = "l ";
 	char *new = ft_strtrim(str, set);
 	printf("%s, len: %zu", new, ft_strlen(new));
-	*/
-	char *str = "sddgfjfhd";
+	
+	char *str = "\0";
 	char **array;
 	int cont = 0;
-	array = ft_split(str, 'd');
+	array = ft_split(str, '\0');
+	if (array == NULL)
+		printf("eeerror");	
 	while (array[cont] != NULL)
 	{
 		printf(".%s.\n", array[cont]);
 		cont++;
 	} 
+
+
+		char *str = "atodosa6 ";
+	char *set = "a ";
+	char *new = ft_strtrim(str, set);
+	//dst = ft_strjoin(str, dst);
+	printf("%s", new);
+*/
 
 	return (1);
 }

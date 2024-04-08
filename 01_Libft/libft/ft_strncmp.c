@@ -14,29 +14,37 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		diff;
-	size_t	i;
+	size_t			i;
+	unsigned char	*uc_s1;
+	unsigned char	*uc_s2;
 
-	diff = 0;
+	uc_s1 = (unsigned char *)s1;
+	uc_s2 = (unsigned char *)s2;
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && diff == 0 && i < n)
+	if (n == 0)
+		return (0);
+	while (uc_s1[i] != '\0' && uc_s2[i] != '\0' && i < n)
 	{
-		diff = ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if ((uc_s1[i] != uc_s2[i]))
+			return (uc_s1[i] - uc_s2[i]);
 		i++;
 	}
-	return (diff);
+	if (i == n)
+		i--;
+	return (uc_s1[i] - uc_s2[i]);
 }
 
 /*int	main(void)
 {
-	char	str2[100] = "holi holaaa";
-	char 	str1[100] = "holi hola";
+	char	*str1 = "1234";
+	char 	*str2 = "1235";
 	int n;
 
-	n = 1;
+	n = 53;
 	printf("La cadena 1 es: %s\n", str1);
 	printf("La cadena 2 es: %s\n", str2);
 	printf("Resultado de la funcion es: %d\n", strncmp(str1,str2,n));
 	printf("El resultado de mi funcion es: %d\n", ft_strncmp(str1, str2, n));
 	return (0);
-}*/
+}
+*/

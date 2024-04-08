@@ -12,21 +12,38 @@
 
 #include "libft.h"
 
-int	ft_count_words(char const *s, char c)
+static int	ft_ptr_index(char const *s, char c, int i, int num_words)
+{
+	while (s[i] == c && num_words != 0)
+		i++;
+	return (i);
+}
+
+static char	**ft_freemem(char	**buffer)
+{
+	int	size;
+
+	size = 0;
+	while (buffer[size])
+		free(buffer[size++]);
+	free(buffer);
+	return (NULL);
+}
+
+static int	ft_count_words(char const *s, char c)
 {
 	int	cont;
-	int i;
+	int	i;
 
-	i = 0;
 	if (ft_strlen(s) == 0)
 		return (0);
+	i = 0;
 	cont = 1;
 	while (s[i] == c)
 		i++;
 	while (s[i] != '\0')
 	{
 		if ((s[i] == c && s[i - 1] != c))
-		//if ((s[i] == c && s[i-1] != c) || (s[i] == c && s[i+1] != c))
 			cont++;
 		i++;
 	}
@@ -35,35 +52,26 @@ int	ft_count_words(char const *s, char c)
 	return (cont);
 }
 
-char	**ft_split_words(char const *s, char c, int num_words, char **dst)
+static char	**ft_split_words(char const *s, char c, int num_words, char **dst)
 {
 	int		i;
 	int		ini;
 	int		cont;
-	char	*s_aux;
-
-	s_aux = NULL;
 
 	cont = 0;
-	i = 0;
-	while (s[i] == c)
-		i++;
+	i = ft_ptr_index(s, c, 0, num_words);
 	ini = i;
 	while (cont < num_words)
 	{
 		if (s[i] == c || s[i] == '\0')
 		{
-			if (s[i - 1] == c)
-				ini = i + 1;
-			else
+			if (s[i - 1] != c)
 			{
-				s_aux = ft_substr(s, ini, i - ini);
-				if (!s_aux)
-					return (NULL);
-				dst[cont] = s_aux; //ft_substr(s, ini, i - ini);
-				cont++;
-				ini = i + 1;
+				dst[cont] = ft_substr(s, ini, i - ini);
+				if (!dst[cont++])
+					return (ft_freemem(dst));
 			}
+			ini = i + 1;
 		}
 		i++;
 	}
@@ -77,7 +85,6 @@ char	**ft_split(char const *s, char c)
 	int		num_words;
 
 	num_words = ft_count_words(s, c);
-	//printf("num words: %d\n", num_words);
 	ptr = (char **)ft_calloc(num_words + 1, sizeof(char *));
 	if (!ptr)
 		return (NULL);
@@ -87,10 +94,14 @@ char	**ft_split(char const *s, char c)
 
 /*int main()
 {
-	char *str = "split  ||this|for|me|||||!|";
+	
 	char **array;
 	int cont = 0;
-	array = ft_split(str, '|');
+	//char *invalidReadCheck = (char *)malloc(sizeof(char));
+	// *invalidReadCheck = 0;
+	// array = ft_split(invalidReadCheck, 0);
+	char *str = "   hola a todsss";
+	array = ft_split(str, ' ');
 	while (array[cont] != NULL)
 	{
 		printf(".%s.\n", array[cont]);

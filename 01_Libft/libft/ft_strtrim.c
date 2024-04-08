@@ -90,34 +90,46 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	len_set;
 	size_t	i;
 	size_t	j;
+	int found_begin;
+	char *aux = NULL;
 
+	found_begin = 0;
 	len_s1 = ft_strlen(s1);
 	len_set = ft_strlen(set);
 	i = 0;
 	j = len_s1;
-	while (s1[i] == set[i])
+	aux = ft_strrchr(set, s1[i]);
+	while(i < len_s1 && aux != NULL)
+		aux = ft_strrchr(set, s1[i++]);
+	i--;
+	//printf("i: %zu, %c\n", i, s1[i]);
+	//printf("j antes de nada: %zu\n", j);
+	aux = ft_strrchr(set, s1[j--]);
+	while(j >= 0 && aux != NULL)
 	{
-		i++;
-		//printf("%d,"(s1[i] == set[i]
+		printf("j: %zu, aux: |%s|, |%c|\n", j, aux, s1[j]);
+		aux = ft_strrchr(set, s1[j--]);
+		//printf("j: %zu, %c\n", j, s1[j]);
 	}
-	while (s1[len_s1--] == set[len_set--])
-		j--;
+	j++;
+	printf("j: %zu, %c\n", j, s1[j]);
+	//j--;
 	ptr = (char *)ft_calloc(j - i - 1, sizeof(char));
 	if (!ptr)
 		return (NULL);
 	while (i--)
 		s1++;
 	ft_strlcpy(ptr, s1, (j - i - 1));
-	return (ptr);
+	return (ptr); 
 }
-/*
+
 int main()
 {
-	char *str = "atodosa6 ";
+	char *str = "a  todosa6 ";
 	char *set = "a ";
 	char *new = ft_strtrim(str, set);
 	//dst = ft_strjoin(str, dst);
 	printf("%s", new);
 
 	return 0;
-}*/
+}

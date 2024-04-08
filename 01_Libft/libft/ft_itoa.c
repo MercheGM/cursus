@@ -25,32 +25,37 @@ static int	ft_digit(int nb)
 	return (iter);
 }
 
-static char *ft_strnbr(int digits, int num_aux, int is_negative, int is_overflow)
+static char	*ft_strnbr(int digits, int num_aux, int is_neg, int is_overflow)
 {
 	char	*ptr;
+
+	if (is_overflow)
+		return (ft_strdup("-2147483648"));
+	if (num_aux == 0)
+		return (ft_strdup("0"));
 	ptr = ft_calloc(digits + 1, sizeof(char));
 	if (!ptr)
 		return (NULL);
-	if (is_overflow)
-	{
-		return ("-2147483648");
-	}
 	while (digits >= 0)
 	{
-		if (digits == 0 && is_negative)
+		if (digits == 0 && is_neg)
 			ptr[0] = '-';
 		digits--;
-		ptr[digits] = num_aux % 10 + '0';
-		num_aux = num_aux / 10;
+		if (digits >= 0)
+		{
+			ptr[digits] = num_aux % 10 + '0';
+			num_aux = num_aux / 10;
+		}
 	}
 	return (ptr);
 }
-char *ft_itoa(int n)
+
+char	*ft_itoa(int n)
 {
-	int digits;
-	int n_aux;
-	int is_negative;
-	int is_overflow;
+	int	digits;
+	int	n_aux;
+	int	is_negative;
+	int	is_overflow;
 
 	n_aux = n;
 	is_negative = 0;
@@ -63,20 +68,19 @@ char *ft_itoa(int n)
 			n_aux = -n;
 			is_negative = 1;
 		}
+		digits = ft_digit(n_aux);
 		if (is_negative)
 			digits++;
-		digits = ft_digit(n_aux);
 		return (ft_strnbr(digits, n_aux, is_negative, is_overflow));
 	}
 	else
-		return (ft_strnbr(10, 2147483647, 1, 1));
+		return (ft_strnbr(11, 2147483647, 1, 1));
 }
-
 
 /*int main()
 {
 	char *str;
-	int n = 2147483648;
+	int n = 1000034;
 	str = ft_itoa(n);
 	printf("%d\n%s\n", n, str);
 	return 0;
