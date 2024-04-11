@@ -34,9 +34,8 @@ int	ft_atoi(const char *str)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			is_negative = 1;
-		i++;
 	}
 	while (str[i] != '\0')
 	{
@@ -45,7 +44,6 @@ int	ft_atoi(const char *str)
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
-
 	if (is_negative)
 		result = -result;
 	return (result);

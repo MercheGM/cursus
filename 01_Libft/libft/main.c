@@ -8,7 +8,7 @@
 /*																			*/
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
 #include <memory.h>
 #include <string.h>

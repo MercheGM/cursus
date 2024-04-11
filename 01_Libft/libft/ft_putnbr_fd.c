@@ -12,19 +12,88 @@
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	power10(int power)
 {
-	char *str;
+	int	result;
 
-	str = ft_itoa(n);
-	write(fd, str, ft_strlen(str));
-	free(str);
+	result = 1;
+	while (power > 0)
+	{
+		result = result * 10;
+		power--;
+	}
+	return (result);
+}
+
+int	ft_digit(int nb)
+{
+	int	iter;
+
+	iter = 1;
+	while (nb >= 10)
+	{
+		nb = nb / 10;
+		iter++;
+	}
+	return (iter);
+}
+
+void	ft_print_num(int fd, int num_aux, int is_negative, int is_overflow)
+{
+	int		coef;
+	char	num;
+	int		iter;
+
+	iter = ft_digit(num_aux);
+	if (!is_overflow)
+	{
+		if (is_negative)
+			write(fd, "-", 1);
+		while (iter > 0)
+		{
+			coef = num_aux / power10(iter - 1);
+			num = coef + '0';
+			ft_putchar_fd(num, fd);
+			num_aux = num_aux - coef * power10(iter - 1);
+			iter--;
+		}
+	}
+	else
+		write(fd, "-2147483648", 11);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+
+{
+	int		digit;
+	int		is_overflow;
+	int		is_negative;
+	int		num_aux;
+
+	is_negative = 0;
+	is_overflow = 0;
+	num_aux = n;
+	if (n < 0)
+	{
+		is_negative = 1;
+		num_aux = -n;
+	}
+	if ((n == INT_MIN) && is_negative)
+	{
+		is_overflow = 1;
+		ft_print_num(fd, num_aux, is_negative, is_overflow);
+	}
+	else
+	{
+		digit = ft_digit(n);
+		ft_print_num(fd, num_aux, is_negative, is_overflow);
+	}
 }
 
 /*int main(void)
 {
 	int fd;
-	int n = -2147483648; 
+	int n = 164189; 
 
 	fd = open("test.txt", O_TRUNC | O_RDWR | O_CREAT, 0600);
 	if (fd >= 0)

@@ -15,20 +15,19 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*str;
-	size_t  len;
-	size_t  i;
+	size_t	len;
+	size_t	i;
 
 	i = 0;
 	len = ft_strlen(s);
-	str = ft_calloc(len, sizeof(char));
+	str = ft_calloc(len + 1, sizeof(char));
 	if (!str || f == NULL)
 		return (NULL);
-	while (i < len)
+	while (s[i])
 	{
-		str[i] = f(i,s[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	str[i] = '\0';
 	return (str);
 }
 /*
@@ -42,13 +41,8 @@ char	ft_MGM(unsigned int i, char c)
 
 int main(void)
 {
-<<<<<<< HEAD
 	char *str = "HolA aAaA tOdOOooSSSsss";
-	printf("Original: \"%s\"\n Aplicando ft_MGM: \"%s\"\n", str, ft_strmapi(str, ft_MGM));
+	printf("Original: \"%s\"\n", str);
+	printf("Aplicando ft_MGM: \"%s\"\n", ft_strmapi(str, ft_MGM));
 	return 1;
-=======
-    char *str = "HolA aAaA tOdOOooSSSsss";
-    printf("Original: \"%s\"\n Aplicando ft_MGM: \"%s\"\n", str, ft_strmapi(str, ft_MGM));
-    return 1;
->>>>>>> a0fc28e39819969a5b6726d3d0adaab1e428dac2
 }*/

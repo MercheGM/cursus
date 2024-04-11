@@ -18,37 +18,36 @@ SRC = 	ft_isalpha.c ft_isdigit.c \
 		ft_striteri.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putendl_fd.c \
 		ft_putnbr_fd.c
-#SRC_BONUS = ft_lstnew_bonus.c \
+SRC_BONUS = ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c \
 			ft_lstadd_back_bonus.c \
-			ft_lstdealone_bonus.c \
+			ft_lstdelone_bonus.c \
 			ft_lstclear_bonus.c \
 			ft_lstiter_bonus.c \
 			ft_lstmap_bonus.c
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 OBJS = $(SRC:.c=.o)
-#OBJS_BONUS = $(SRC_BONUS:.c=.o)
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
 #all : bonus
-all : $(NAME) 
+all : $(NAME)
 
 $(NAME) : $(OBJS) 
 	$(AR) rcs $(NAME) $(OBJS)
 
-#bonus: $(OBJS) $(OBJS_BONUS)
-#	$(AR) rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+bonus: $(OBJS_BONUS) 
+	$(AR) rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 
 fclean:
-	@rm -f *.o $(NAME) a.out
+	@rm -f *.o $(NAME) 
 
 clean:
 	@rm -f *.o
 
 re: fclean all
 
-#.PHONY : all bonus clean fclean re
 .PHONY : all clean fclean re

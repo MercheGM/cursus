@@ -85,51 +85,40 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*ptr;
 	size_t	len_s1;
-	size_t	len_set;
-	size_t	i;
-	size_t	j;
-	int found_begin;
-	char *aux = NULL;
+	size_t	ini;
+	size_t	end;
+	char	*aux;
 
-	found_begin = 0;
 	len_s1 = ft_strlen(s1);
-	len_set = ft_strlen(set);
-	i = 0;
-	j = len_s1;
-	aux = ft_strrchr(set, s1[i]);
-	while(i < len_s1 && aux != NULL)
-		aux = ft_strrchr(set, s1[i++]);
-	i--;
-	//printf("i: %zu, %c\n", i, s1[i]);
-	//printf("j antes de nada: %zu\n", j);
-	aux = ft_strrchr(set, s1[j--]);
-	while(j >= 0 && aux != NULL)
-	{
-		printf("j: %zu, aux: |%s|, |%c|\n", j, aux, s1[j]);
-		aux = ft_strrchr(set, s1[j--]);
-		//printf("j: %zu, %c\n", j, s1[j]);
-	}
-	j++;
-	printf("j: %zu, %c\n", j, s1[j]);
-	//j--;
-	ptr = (char *)ft_calloc(j - i - 1, sizeof(char));
-	if (!ptr)
-		return (NULL);
-	while (i--)
-		s1++;
-	ft_strlcpy(ptr, s1, (j - i - 1));
-	return (ptr); 
+	if (len_s1 == 0)
+		return (ft_strdup(""));
+	ini = 0;
+	end = len_s1 - 1;
+	aux = ft_strrchr(set, s1[ini]);
+	while (ini < len_s1 && aux != NULL)
+		aux = ft_strrchr(set, s1[ini++]);
+	if (ini != 0)
+		ini--;
+	aux = ft_strrchr(set, s1[end--]);
+	while (end > 0 && aux != NULL)
+		aux = ft_strrchr(set, s1[end--]);
+	if (end == 0)
+		end = ini;
+	else
+		end++;
+	if (len_s1 == 0 || (ini == len_s1 - 1 && end == len_s1 - 1))
+		return (ft_strdup(""));
+	return (ft_substr(s1, (unsigned int)ini, end - ini + 1));
 }
-
+/*
 int main()
 {
-	char *str = "a  todosa6 ";
-	char *set = "a ";
+	char *str = "";
+	char *set = "";
 	char *new = ft_strtrim(str, set);
 	//dst = ft_strjoin(str, dst);
-	printf("%s", new);
+	printf("|%s|", new);
 
 	return 0;
-}
+}*/
