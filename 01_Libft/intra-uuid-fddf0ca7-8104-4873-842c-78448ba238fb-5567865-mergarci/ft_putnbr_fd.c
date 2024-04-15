@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	power10(int power)
+static int	power10(int power)
 {
 	int	result;
 
@@ -25,7 +25,7 @@ int	power10(int power)
 	return (result);
 }
 
-int	ft_digit(int nb)
+static int	ft_digit(int nb)
 {
 	int	iter;
 
@@ -38,7 +38,7 @@ int	ft_digit(int nb)
 	return (iter);
 }
 
-void	ft_print_num(int fd, int num_aux, int is_negative, int is_overflow)
+static void	ft_write_num(int fd, int num_aux, int is_negative, int is_overflow)
 {
 	int		coef;
 	char	num;
@@ -81,12 +81,12 @@ void	ft_putnbr_fd(int n, int fd)
 	if ((n == INT_MIN) && is_negative)
 	{
 		is_overflow = 1;
-		ft_print_num(fd, num_aux, is_negative, is_overflow);
+		ft_write_num(fd, num_aux, is_negative, is_overflow);
 	}
 	else
 	{
 		digit = ft_digit(n);
-		ft_print_num(fd, num_aux, is_negative, is_overflow);
+		ft_write_num(fd, num_aux, is_negative, is_overflow);
 	}
 }
 

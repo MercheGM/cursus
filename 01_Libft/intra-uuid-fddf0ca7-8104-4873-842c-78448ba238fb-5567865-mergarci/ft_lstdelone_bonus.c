@@ -6,17 +6,11 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:55:05 by mergarci          #+#    #+#             */
-/*   Updated: 2024/04/11 14:25:46 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:50:46 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*static void	ft_del(void *content)
-{
-	if (content != NULL)
-		free(content);
-}*/
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
