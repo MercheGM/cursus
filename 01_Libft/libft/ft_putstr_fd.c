@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+/* Sends the string 's' to the specified file descriptor.*/
 void	ft_putstr_fd(char *c, int fd)
 {
 	write(fd, c, ft_strlen(c));

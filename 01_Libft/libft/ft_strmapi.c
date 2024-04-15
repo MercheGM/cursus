@@ -12,6 +12,9 @@
 
 #include "libft.h"
 
+/* To each character of the string 's', apply the function 'f' giving as 
+parameters the index of each character within 's' and the character itself.
+Generates a new string with the result of successive use of 'f' */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*str;

@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+/* Function that count the number of digits that input has */
 static int	ft_digit(int nb)
 {
 	int	iter;
@@ -25,6 +26,8 @@ static int	ft_digit(int nb)
 	return (iter);
 }
 
+/* Function that allocate memory to the string. It takes if number is negative
+or if the number is the negative number */
 static char	*ft_strnbr(int digits, int num_aux, int is_neg, int is_overflow)
 {
 	char	*ptr;
@@ -50,6 +53,8 @@ static char	*ft_strnbr(int digits, int num_aux, int is_neg, int is_overflow)
 	return (ptr);
 }
 
+/* Using malloc(3), generate a string that represents the integer value 
+received as an argument. Negative numbers have to be managed.*/
 char	*ft_itoa(int n)
 {
 	int	digits;

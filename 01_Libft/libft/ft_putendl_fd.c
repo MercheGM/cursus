@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+/* Send the string 's' to the given file descriptor, followed by a new line*/
 void	ft_putendl_fd(char *c, int fd)
 {
 	write(fd, c, ft_strlen(c));

@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+/*Get the power of 10*/
 int	power10(int power)
 {
 	int	result;
@@ -25,6 +26,7 @@ int	power10(int power)
 	return (result);
 }
 
+/*Get the number of digits*/
 int	ft_digit(int nb)
 {
 	int	iter;
@@ -38,7 +40,8 @@ int	ft_digit(int nb)
 	return (iter);
 }
 
-void	ft_print_num(int fd, int num_aux, int is_negative, int is_overflow)
+/* Write the given number to the file descriptor.*/
+void	ft_write_num(int fd, int num_aux, int is_negative, int is_overflow)
 {
 	int		coef;
 	char	num;
@@ -62,6 +65,7 @@ void	ft_print_num(int fd, int num_aux, int is_negative, int is_overflow)
 		write(fd, "-2147483648", 11);
 }
 
+/* Sends the number 'n' to the given file descriptor.*/
 void	ft_putnbr_fd(int n, int fd)
 
 {
@@ -81,12 +85,12 @@ void	ft_putnbr_fd(int n, int fd)
 	if ((n == INT_MIN) && is_negative)
 	{
 		is_overflow = 1;
-		ft_print_num(fd, num_aux, is_negative, is_overflow);
+		ft_write_num(fd, num_aux, is_negative, is_overflow);
 	}
 	else
 	{
 		digit = ft_digit(n);
-		ft_print_num(fd, num_aux, is_negative, is_overflow);
+		ft_write_num(fd, num_aux, is_negative, is_overflow);
 	}
 }
 

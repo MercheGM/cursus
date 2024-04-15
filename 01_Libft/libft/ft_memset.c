@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+/* Fill a byte string with a byte value */
 void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			cont;

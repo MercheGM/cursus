@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+/* Function allocates sufficient memory for a copy of the string s1, does 
+the copy, and returns a pointer to it. */
 char	*ft_strdup(const char *s1)
 {
 	char	*ptr;

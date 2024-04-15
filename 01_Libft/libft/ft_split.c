@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+/* Gets the first index where the character is different from the separator 
+character c */
 static int	ft_ptr_index(char const *s, char c, int i, int num_words)
 {
 	while (s[i] == c && num_words != 0)
@@ -19,6 +21,7 @@ static int	ft_ptr_index(char const *s, char c, int i, int num_words)
 	return (i);
 }
 
+/* Free memory*/
 static char	**ft_freemem(char	**buffer)
 {
 	int	size;
@@ -30,6 +33,7 @@ static char	**ft_freemem(char	**buffer)
 	return (NULL);
 }
 
+/* Count number of words. */
 static int	ft_count_words(char const *s, char c)
 {
 	int	cont;
@@ -52,6 +56,7 @@ static int	ft_count_words(char const *s, char c)
 	return (cont);
 }
 
+/* Split by words using c as separator. Free memory if error.*/
 static char	**ft_split_words(char const *s, char c, int num_words, char **dst)
 {
 	int		i;
@@ -79,6 +84,9 @@ static char	**ft_split_words(char const *s, char c, int num_words, char **dst)
 	return (dst);
 }
 
+/* Reserve an array of strings resulting from separating
+the string 's' into substrings using the character 'c' as a delimiter. 
+The array must be terminated with a NULL pointer.*/
 char	**ft_split(char const *s, char c)
 {
 	char	**ptr;

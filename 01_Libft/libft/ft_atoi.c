@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+/*Function that converts a string to integer*/
 static int	ft_isspace(char c)
 {
 	if ((c == '\t') || (c == '\n') || (c == '\v') || (c == '\f')
@@ -21,6 +22,7 @@ static int	ft_isspace(char c)
 		return (0);
 }
 
+/* Convert ASCII string to integer */
 int	ft_atoi(const char *str)
 {
 	int	i;

@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+/* Function converts an upper-case letter to the corresponding
+lower-case letter.*/
 int	ft_tolower(int c)
 {
 	if (ft_isalpha(c) && (c >= 'A' && c <= 'Z'))

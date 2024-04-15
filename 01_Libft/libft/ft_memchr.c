@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+/* Function locates the first occurrence of c (converted to an unsigned char)
+in string s. */
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	int		found_char;

@@ -12,19 +12,7 @@
 
 #include "libft.h"
 
-/*void	ft_print_lst(t_list **lst)
-{
-	t_list	*aux = *lst;
-
-	while (aux != NULL)
-	{
-		printf("****%p*****\n", aux);
-		printf("lista->content: %s\n", (char *)aux->content);
-		printf("lista->next: %p\n", aux->next);
-		aux = aux->next;
-	}
-}*/
-
+/* Add the 'new' node to the beginning of the 'lst' list. */
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (*lst != NULL)

@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+/* Alphabetic character test. Function tests for any character that 
+is upper or lower */
 int	ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))

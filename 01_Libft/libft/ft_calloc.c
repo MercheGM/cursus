@@ -1,17 +1,21 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   ft_calloc.c										:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mergarci <mergarci@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/03/22 15:06:43 by mergarci		  #+#	#+#			 */
-/*   Updated: 2024/03/22 16:20:33 by mergarci		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 11:59:53 by mergarci          #+#    #+#             */
+/*   Updated: 2024/04/15 12:01:56 by mergarci         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/* Allocate memory. The ft_calloc() function contiguously allocates enough 
+space for count objects that are size bytes of memory each and returns a 
+pointer to he allocated memory.  The allocated memory is filled with bytes 
+of value zero.*/
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;

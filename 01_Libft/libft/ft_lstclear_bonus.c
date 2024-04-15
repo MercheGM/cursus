@@ -12,6 +12,9 @@
 
 #include "libft.h"
 
+/* Delete and free the given ’lst’ node and all consecutive nodes of that 
+node, using the ’del’ and free(3) function.
+In the end, the pointer to the list must be NULL. */
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*aux;

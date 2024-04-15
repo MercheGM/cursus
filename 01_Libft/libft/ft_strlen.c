@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 
+/* Function computes the length of the string s.*/
 size_t	ft_strlen(const char *s)
 {
 	size_t	cont;

@@ -12,7 +12,11 @@
 
 #include "libft.h"
 
-
+/* 
+Iterates the list 'lst' and applies the function 'f' to the contents of each
+node. Creates a list resulting from the correct and successive application of
+the function 'f' on each node. The 'del' function is used to delete the 
+contents of a node, if necessary. */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*list;

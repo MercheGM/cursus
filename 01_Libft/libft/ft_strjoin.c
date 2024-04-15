@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+/* Reserve and return a new string, formed by the concatenation 
+of 's1' and 's2'.*/
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*ptr;
