@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:24 by mergarci          #+#    #+#             */
-/*   Updated: 2024/04/16 15:47:43 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:47:19 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@
 int main (void)
 {
 	int fd;
-	char *c;;
-
-	//fd = 0;
-	fd = open("test.txt", O_TRUNC | O_RDWR | O_CREAT, 0600);
-	printf("%d", fd);
-
+	//char *c;
+	char *buffer;
+	
+	fd = open("test.txt", O_RDWR);
+	printf("%d, %d\n", fd, BUFFER_SIZE);
+	buffer = (char *)ft_calloc_GNL(BUFFER_SIZE, sizeof(char));
+	if (!buffer)
+		return (0);
+	printf("bytes leidos: %zu\n", read(fd, buffer, BUFFER_SIZE));
+	printf("%s\n", buffer);
 	close(fd);
 	return (1);
 }

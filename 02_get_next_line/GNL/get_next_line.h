@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:07:18 by mergarci          #+#    #+#             */
-/*   Updated: 2024/04/16 13:12:30 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:44:23 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 //# include <ctype.h>
 # include <stdio.h>
 //# include <string.h>
-//# include <stdlib.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
+# endif
 // GNL
 /*char	*get_next_line(int fd);
 char	*get_next_line(int fd);*/
