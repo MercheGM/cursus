@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-/* Function locates the last occurrence of c in the string pointed to by s*/
+/* Function locates the first occurrence of c in the string pointed to by s*/
 char	*ft_strchr(const char *s, int c)
 {
 	int				found_char;
