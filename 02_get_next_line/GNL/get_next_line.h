@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:07:18 by mergarci          #+#    #+#             */
-/*   Updated: 2024/04/16 17:44:23 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:10:37 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,18 @@
 #  define BUFFER_SIZE 4
 # endif
 // GNL
-/*char	*get_next_line(int fd);
-char	*get_next_line(int fd);*/
+char	*get_next_line(int fd);
+//char	*get_next_line(int fd);*/
 
 //GNL_UTILS
-void	*ft_calloc_GNL(size_t count, size_t size);
+void	*ft_callocGNL(size_t count, size_t size);
+
+char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int star, size_t len);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char	*ft_strdup(const char *s1);
+
+
 
 #endif
