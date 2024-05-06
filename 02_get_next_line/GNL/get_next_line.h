@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:07:18 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/03 15:41:58 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:15:31 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <stdbool.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
@@ -37,13 +38,14 @@ typedef struct s_list
 
 //GNL_UTILS
 void	*ft_callocGNL(size_t count, size_t size);
-
-char	*ft_strchr(const char *s, int c);
+void	*ft_memset(void *b, int c, size_t len);
+bool	ft_strchrGNL(const char *s, char *dst, int c);
 char	*ft_substr(char const *s, unsigned int star, size_t len);
 size_t	ft_strlen(const char *s);
-size_t	ft_strlcpyn(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 
 #endif
