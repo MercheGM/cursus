@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:53 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/06 16:17:17 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/05/07 13:58:27 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,32 +92,39 @@ char	*ft_substr(char const *s, unsigned int star, size_t len)
 	return (ptr);
 }
 
-bool ft_strchrGNL(const char *s, char *dst, int c)
+bool ft_strchrGNL(char **s, char **dst, int c)
 {
 	int				found_char;
 	unsigned char	c_aux;
-
+	char			*ptr_aux;
+	int				cont;
+	ptr_aux = *s;
+	cont = 0;
 	c_aux = c;
 	found_char = 0;
-	while (*s != '\0')
+	while (ptr_aux[cont++] != '\0')
 	{
-		if (*s == c_aux)
+		//cont++;
+		if (ptr_aux[cont] == c_aux)
 		{
-			s++;
+			//ptr_aux[cont];
 			found_char = 1;
 			break ;
 		}
-		else
-			s++;
+		//else
+		//{
+		//	ptr_aux[cont];
+		//}
 	}
 	if (!found_char && c_aux != '\0')
 	{
-		dst = NULL; //return (NULL);
+		*dst = (char *)NULL; //return (NULL);
 		return (false);
 	}
 	//return ((char *)s);
 	//return (ft_strdup((char *)s));
-	dst = ft_strdup((char *)s);
+	*s = ft_substr(*s, 0, cont);
+	*dst = ft_strdup(&ptr_aux[cont]);
 	return (true);
 }
 

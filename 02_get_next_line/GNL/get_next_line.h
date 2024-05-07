@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:07:18 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/06 16:15:31 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/05/07 10:28:32 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_list
 //GNL_UTILS
 void	*ft_callocGNL(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
-bool	ft_strchrGNL(const char *s, char *dst, int c);
+bool	ft_strchrGNL(char **s, char **dst, int c);
 char	*ft_substr(char const *s, unsigned int star, size_t len);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
