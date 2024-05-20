@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:53 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/07 13:58:27 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:22:21 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ size_t	ft_strlen(const char *s)
 	size_t	cont;
 
 	cont = 0;
-	while (*s++)
+	while (s[cont] != '\0')
 		cont++;
 	return (cont);
 }
@@ -92,40 +92,36 @@ char	*ft_substr(char const *s, unsigned int star, size_t len)
 	return (ptr);
 }
 
-bool ft_strchrGNL(char **s, char **dst, int c)
+bool	ft_strchrGNL(char **s, char **dst, int c)
 {
-	int				found_char;
-	unsigned char	c_aux;
+	bool			found_char;
 	char			*ptr_aux;
 	int				cont;
+
 	ptr_aux = *s;
 	cont = 0;
-	c_aux = c;
-	found_char = 0;
-	while (ptr_aux[cont++] != '\0')
+	found_char = false;
+	while (ptr_aux[cont] != '\0')
 	{
-		//cont++;
-		if (ptr_aux[cont] == c_aux)
+		if (ptr_aux[cont] == (unsigned char)c)
 		{
-			//ptr_aux[cont];
-			found_char = 1;
+			found_char = true;
 			break ;
 		}
-		//else
-		//{
-		//	ptr_aux[cont];
-		//}
+		cont++;
 	}
-	if (!found_char && c_aux != '\0')
+	if (*dst != NULL)
+		free(*dst);
+	if (!found_char /*&& (unsigned char)c != '\0'*/)
+		*dst = ft_strdup("");
+	else
 	{
-		*dst = (char *)NULL; //return (NULL);
-		return (false);
+		*s = ft_substr(*s, 0, ++cont);
+		*dst = ft_strdup(&ptr_aux[cont]);
+		free(ptr_aux);
 	}
-	//return ((char *)s);
-	//return (ft_strdup((char *)s));
-	*s = ft_substr(*s, 0, cont);
-	*dst = ft_strdup(&ptr_aux[cont]);
-	return (true);
+	//ptr_aux = NULL;
+	return (found_char);
 }
 
 void	*ft_memset(void *b, int c, size_t len)
@@ -143,12 +139,17 @@ void	*ft_memset(void *b, int c, size_t len)
 void	*ft_callocGNL(size_t count, size_t size)
 {
 	void	*ptr;
-
+	//unsigned char	*ptr;
+	//size_t			cont;
+ 
+	//cont = 0;
 	ptr = malloc(count * size);
 	if (ptr == NULL)
 		return (NULL);
+	/*while (cont < size)
+		ptr[cont++] = (unsigned char)0;*/
 	ft_memset(ptr, 0, size);
-	return (ptr);
+	return ((void *)ptr);
 }
 
 
