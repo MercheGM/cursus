@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:53 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/20 18:22:21 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:40:41 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strdup(const char *s1)
 	if (!s1)
 		return (NULL);
 	len = ft_strlen(s1);
-	ptr = (char *)ft_callocGNL(len + 1, sizeof(char));
+	ptr = (char *)ft_calloc_gnl(len + 1, sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	while (s1[i])
@@ -79,7 +79,7 @@ char	*ft_substr(char const *s, unsigned int star, size_t len)
 		return (ft_strdup(""));
 	if (star + len == len_src + 1)
 		len--;
-	ptr = (char *)ft_callocGNL(len + 1, sizeof(char));
+	ptr = (char *)ft_calloc_gnl(len + 1, sizeof(char));
 	if (!ptr)
 		return (NULL);
 	if ((star < len || (star + len) <= len_src + 1))
@@ -92,7 +92,7 @@ char	*ft_substr(char const *s, unsigned int star, size_t len)
 	return (ptr);
 }
 
-bool	ft_strchrGNL(char **s, char **dst, int c)
+bool	ft_strchr_gnl(char **s, char **dst, int c)
 {
 	bool			found_char;
 	char			*ptr_aux;
@@ -112,7 +112,7 @@ bool	ft_strchrGNL(char **s, char **dst, int c)
 	}
 	if (*dst != NULL)
 		free(*dst);
-	if (!found_char /*&& (unsigned char)c != '\0'*/)
+	if (!found_char)
 		*dst = ft_strdup("");
 	else
 	{
@@ -120,38 +120,22 @@ bool	ft_strchrGNL(char **s, char **dst, int c)
 		*dst = ft_strdup(&ptr_aux[cont]);
 		free(ptr_aux);
 	}
-	//ptr_aux = NULL;
 	return (found_char);
 }
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_calloc_gnl(size_t count, size_t size)
 {
-	size_t			cont;
 	unsigned char	*ptr;
+	size_t			cont;
 
-	ptr = b;
 	cont = 0;
-	while (cont < len)
-		ptr[cont++] = (unsigned char)c;
-	return (b);
-}
-
-void	*ft_callocGNL(size_t count, size_t size)
-{
-	void	*ptr;
-	//unsigned char	*ptr;
-	//size_t			cont;
- 
-	//cont = 0;
 	ptr = malloc(count * size);
 	if (ptr == NULL)
 		return (NULL);
-	/*while (cont < size)
-		ptr[cont++] = (unsigned char)0;*/
-	ft_memset(ptr, 0, size);
+	while (cont < size)
+		ptr[cont++] = '\0';
 	return ((void *)ptr);
 }
-
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -181,7 +165,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	ptr = (char *)ft_callocGNL(len_s1 + len_s2 + 1, sizeof(char));
+	ptr = (char *)ft_calloc_gnl(len_s1 + len_s2 + 1, sizeof(char));
 	if (!ptr)
 		return (NULL);
 	ft_strlcpy(ptr, s1, len_s1 + 1);
