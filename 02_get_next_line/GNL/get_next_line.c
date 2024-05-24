@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:24 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/24 13:33:05 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:35:22 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ char	*get_next_line(int fd)
 	str_out = ft_read_gnl(fd, found_n, &str_out, &str_aux);
 	return (str_out);
 }
-int	main(void)
+/*int	main(void)
 {
 	int		fd;
 	char	*aux;
@@ -131,4 +131,4 @@ int	main(void)
 	} 
 	close(fd);
 	return (1);
-}
+}*/
