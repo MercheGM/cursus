@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:24 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/24 13:22:54 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:33:05 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*ft_read_gnl(int fd, bool found_n, char **str_out, char **str_aux)
 	read_bytes = 1;
 	while (read_bytes > 0 && !found_n)
 	{
+		//a = read(fd, buffer, BUFFER_SIZE);
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes <= 0)
 			break ;
@@ -110,7 +111,7 @@ char	*get_next_line(int fd)
 	str_out = ft_read_gnl(fd, found_n, &str_out, &str_aux);
 	return (str_out);
 }
-/*int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*aux;
@@ -130,4 +131,4 @@ char	*get_next_line(int fd)
 	} 
 	close(fd);
 	return (1);
-}*/
+}

@@ -6,7 +6,11 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:07:18 by mergarci          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/05/24 13:15:35 by mergarci         ###   ########.fr       */
+=======
+/*   Updated: 2024/05/22 11:39:56 by mergarci         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
