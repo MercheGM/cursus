@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:53 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/24 13:32:22 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 12:45:12 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,48 +91,6 @@ char	*ft_substr(char const *s, unsigned int star, size_t len)
 	}
 	return (ptr);
 }
-/*void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t			cont;
-	unsigned char	*ptr;
-
-	ptr = b;
-	cont = 0;
-	while (cont < len)
-		ptr[cont++] = (unsigned char)c;
-	return (b);
-}*/
-
-/*bool	ft_strchr_gnl(char **s, char **dst, int c)
-{
-	bool			found_char;
-	char			*ptr_aux;
-	int				cont;
-
-	ptr_aux = *s;
-	cont = 0;
-	found_char = false;
-	while (ptr_aux[cont] != '\0')
-	{
-		if (ptr_aux[cont] == (unsigned char)c)
-		{
-			found_char = true;
-			break ;
-		}
-		cont++;
-	}
-	if (*dst != NULL)
-		*dst = ft_memfree(*dst);
-	if (!found_char)
-		*dst = ft_strdup("");
-	else
-	{
-		*s = ft_substr(*s, 0, ++cont);
-		*dst = ft_strdup(&ptr_aux[cont]);
-		ptr_aux = ft_memfree(ptr_aux);
-	}
-	return (found_char);
-}*/
 
 bool	ft_strchr_gnl(char **s, char **dst, int c)
 {

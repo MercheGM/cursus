@@ -6,16 +6,14 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:07:18 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/24 13:35:10 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:43:17 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-//# include <ctype.h>
 # include <stdio.h>
-//# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -25,11 +23,18 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
 # endif
+
+typedef struct data
+{
+	char	*str_out;
+	bool	found_n;
+}	t_data;
+
 // GNL
 void	*ft_calloc_gnl(size_t count, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_memfree(char *ptr);
-char	*ft_read_gnl(int fd, bool found_n, char **str_out, char **str_aux);
+char	*ft_read_gnl(int fd, t_data data, char **str_aux, ssize_t read_bytes);
 char	*get_next_line(int fd);
 
 //GNL_UTILS

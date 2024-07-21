@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:24 by mergarci          #+#    #+#             */
-/*   Updated: 2024/05/24 13:35:22 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:42:09 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,68 +58,68 @@ char	*ft_memfree(char *ptr)
 	return (NULL);
 }
 
-char	*ft_read_gnl(int fd, bool found_n, char **str_out, char **str_aux)
+char	*ft_read_gnl(int fd, t_data data, char **str_aux, ssize_t read_bytes)
 {
-	ssize_t		read_bytes;
 	char		*ptr_aux;
 	char		*buffer;
 
 	buffer = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (NULL);
-	read_bytes = 1;
-	while (read_bytes > 0 && !found_n)
+	while (read_bytes > 0 && !data.found_n)
 	{
-		//a = read(fd, buffer, BUFFER_SIZE);
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes <= 0)
 			break ;
 		buffer[read_bytes] = '\0';
-		found_n = ft_strchr_gnl(&buffer, str_aux, '\n');
-		ptr_aux = *str_out;
-		*str_out = ft_strjoin(*str_out, buffer);
+		data.found_n = ft_strchr_gnl(&buffer, str_aux, '\n');
+		ptr_aux = data.str_out;
+		data.str_out = ft_strjoin(data.str_out, buffer);
 		ptr_aux = ft_memfree(ptr_aux);
 	}
 	buffer = ft_memfree(buffer);
-	if ((read_bytes == 0 && ft_strlen(*str_out) == 0) || read_bytes < 0)
+	if ((read_bytes == 0 && ft_strlen(data.str_out) == 0) || read_bytes < 0)
 	{
 		*str_aux = ft_memfree(*str_aux);
-		*str_out = ft_memfree(*str_out);
+		data.str_out = ft_memfree(data.str_out);
 	}
-	return (*str_out);
+	return (data.str_out);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*str_out;
 	static char	*str_aux;
-	bool		found_n;
+	t_data		data;
+	ssize_t		read_bytes;
 
-	found_n = false;
+	data.found_n = false;
+	read_bytes = 1;
 	if (fd == -1 || BUFFER_SIZE == 0)
 		return (NULL);
-	str_out = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
-	if (!str_out)
+	data.str_out = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
+	if (!data.str_out)
 		return (NULL);
 	if (!str_aux)
 		str_aux = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
 	else
 	{
-		ft_strlcpy(str_out, str_aux, ft_strlen(str_aux) + 1);
-		found_n = ft_strchr_gnl(&str_out, &str_aux, '\n');
+		ft_strlcpy(data.str_out, str_aux, ft_strlen(str_aux) + 1);
+		data.found_n = ft_strchr_gnl(&data.str_out, &str_aux, '\n');
 	}
-	str_out = ft_read_gnl(fd, found_n, &str_out, &str_aux);
-	return (str_out);
+	data.str_out = ft_read_gnl(fd, data, &str_aux, read_bytes);
+	return (data.str_out);
 }
+
 /*int	main(void)
 {
 	int		fd;
 	char	*aux;
 
-	fd = open("test.txt", O_RDWR);
+	fd = open("test1.txt", O_RDWR);
+	printf("%d",fd);
 	//fd = 10000;
- 	if (fd != -1)
-	{
+ 	//if (fd != -1)
+	//{
 		aux = get_next_line(fd);
 		while (aux != NULL)
 		{
@@ -128,7 +128,7 @@ char	*get_next_line(int fd)
 			aux = get_next_line(fd);
 		}
 		free(aux);
-	} 
+	//} 
 	close(fd);
 	return (1);
 }*/
