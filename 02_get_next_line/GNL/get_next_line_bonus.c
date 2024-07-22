@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:24 by mergarci          #+#    #+#             */
-/*   Updated: 2024/07/22 13:16:10 by mergarci         ###   ########.fr       */
+/*   Updated: 2024/07/22 13:18:14 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ char	*get_next_line(int fd)
 	return (data.str_out);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int		fd1;
 	int		fd2;
@@ -136,4 +136,4 @@ int	main(void)
 	close(fd1);
 	close(fd2);
 	return (1);
-}
+}*/
