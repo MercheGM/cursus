@@ -1,0 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/16 12:07:18 by mergarci          #+#    #+#             */
+/*   Updated: 2024/07/22 13:00:12 by mergarci         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <limits.h>
+# include <stdbool.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
+# endif
+ 
+# ifndef MAX_NUM_FD
+#  define MAX_NUM_FD 4096
+# endif
+
+typedef struct data
+{
+	char	*str_out;
+	bool	found_n;
+}	t_data;
+
+// GNL
+void	*ft_calloc_gnl(size_t count, size_t size);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_memfree(char *ptr);
+char	*ft_read_gnl(int fd, t_data data, char **str_aux, ssize_t read_bytes);
+char	*get_next_line(int fd);
+
+//GNL_UTILS
+char	*ft_strdup(const char *s1);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlen(const char *s);
+char	*ft_substr(char const *s, unsigned int star, size_t len);
+bool	ft_strchr_gnl(char **s, char **dst, int c);
+
+#endif
