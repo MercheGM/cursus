@@ -1,4 +1,10 @@
 CC = gcc
+CFLAGS = -Wall -Werror -Wextra
+
+AR = ar rcs
+
+RM = @rm -f
+
 NAME = libft.a
 SRC = 	ft_isalpha.c ft_isdigit.c \
 		ft_isalnum.c ft_isascii.c \
@@ -28,26 +34,30 @@ SRC_BONUS = ft_lstnew_bonus.c \
 			ft_lstiter_bonus.c \
 			ft_lstmap_bonus.c
 
-CFLAGS = -Wall -Werror -Wextra -g
 
-OBJS = $(SRC:.c=.o)
-OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
-#all : bonus
+OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
+
+BONUS_CACHE = .cache
+
 all : $(NAME)
 
-$(NAME) : $(OBJS) 
-	$(AR) rcs $(NAME) $(OBJS)
+$(NAME) : $(OBJ) 
+	$(AR) $(NAME) $(OBJ)
 
-bonus: $(OBJS_BONUS) 
-	$(AR) rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+$(BONUS_CACHE): $(OBJ_BONUS)
+	$(AR) $(NAME) $(OBJ_BONUS)
+	@touch $(BONUS_CACHE)
 
-fclean:
-	@rm -f *.o $(NAME) 
+bonus: $(BONUS_CACHE)
+
+fclean: clean
+	$(RM) $(NAME) $(BONUS_CACHE) 
 
 clean:
-	@rm -f *.o
+	$(RM) *.o
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all bonus clean fclean re
