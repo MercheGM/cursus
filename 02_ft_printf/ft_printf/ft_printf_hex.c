@@ -6,13 +6,13 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:02:09 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/14 20:53:22 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:19:42 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_digit(int nb)
+static int	ft_digit(long nb)
 {
 	int	iter;
 
@@ -39,10 +39,10 @@ static void	ft_fillbytes(int index, char *s)
 		s[--index] = HEX[15];
 }
 
-static int	ft_convert(int n, char *s, int index, bool is_negative)
+static int	ft_convert(long n, char *s, int index, bool is_negative)
 {
-	int	mod;
-	int	num;
+	long	mod;
+	long	num;
 
 	num = n / 16;
 	mod = n % 16;
@@ -51,6 +51,7 @@ static int	ft_convert(int n, char *s, int index, bool is_negative)
 	if (index == 8)
 		mod++;
 	s[--index] = HEX[mod];
+	//printf("%c\n",s[index+1]);
 	if (num > 16)
 		ft_convert(num, s, index, is_negative);
 	else
@@ -58,6 +59,7 @@ static int	ft_convert(int n, char *s, int index, bool is_negative)
 		if (is_negative)
 			num = 15 - num;
 		s[--index] = HEX[num];
+		//printf("%c\n",s[index+1]);
 		if (is_negative && index > 0)
 			ft_fillbytes(index, s);
 	}
@@ -76,7 +78,7 @@ void	ft_toupper_str(char *s)
 	}
 }
 
-char	*ft_atoi_hex(int n, char type)
+char	*ft_atoi_hex(long n, char type)
 {
 	int		digits;
 	char	*s;
@@ -96,4 +98,9 @@ char	*ft_atoi_hex(int n, char type)
 	if (type == 'X')
 		ft_toupper_str(s);
 	return (s);
+}
+char	*ft_memfree(char *ptr)
+{
+	free(ptr);
+	return (NULL);
 }

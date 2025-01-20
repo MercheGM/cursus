@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:13:29 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/14 19:16:26 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:51:49 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	ft_check_placeholder(char const *s, int *i, va_list vargs)
 		cont = ft_placeholder_d(vargs);
 		//ft_putnbr_fd(va_arg(vargs, int), 1);
 	else if (s[*i + 1] == 'i')
-		ft_putchar_fd('i', 1);
+		cont = ft_placeholder_d(vargs); 
 	else if (s[*i + 1] == 'u')
-		ft_putnbr_fd((unsigned int)va_arg(vargs, unsigned int), 1);
+		cont = ft_placeholder_u(vargs);
 	else if (s[*i + 1] == 'x')
 		cont = ft_placeholder_hex(vargs, 'x');
 	else if (s[*i + 1] == 'X')

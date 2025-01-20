@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:21:59 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/14 21:23:34 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:19:50 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,15 @@ int	ft_placeholder_hex(va_list vargs, char type)
 {
 	char	*str;
 	int		num;
+	int		n_written;
 
+	n_written = 0;
 	num = va_arg(vargs, int);
 	str = ft_atoi_hex(num, type);
 	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	n_written = ft_strlen(str);
+	//str = ft_memfree(str);
+	return (n_written);
 }
 
 int ft_print_ptr(char *str)
@@ -44,16 +48,14 @@ int ft_print_ptr(char *str)
 int	ft_placeholder_p(va_list vargs)
 {
 	int		n_written;
-	unsigned long long int dir_ptr;
+	unsigned long dir_ptr;
 	char	*str;
 
 	n_written = 0; 
-	dir_ptr = va_arg(vargs, unsigned long long int);
+	dir_ptr = va_arg(vargs, unsigned long );
 	ft_putchar_fd('0', 1);
 	ft_putchar_fd('x', 1);
-	n_written = ft_print_ptr(ft_atoi_hex((dir_ptr >> 32), 'x'));
 	n_written += ft_print_ptr(ft_atoi_hex((dir_ptr), 'x'));
-	printf("******%llx******\n",dir_ptr);   //en ocasiones no funciona correctamente. Cuando el puntero acaba en 3
 	n_written += 2;
 	return (n_written);
 }
@@ -94,3 +96,24 @@ int	ft_placeholder_c(va_list vargs)
 	n_written++;
 	return (n_written);
 }
+
+int	ft_placeholder_u(va_list vargs)
+{
+	int				n_written;
+	unsigned int	num;
+	unsigned int	divisor;
+	
+	n_written = 0;
+	divisor = 1;
+	num = va_arg(vargs, unsigned int);
+	while (num / divisor >= 10) 
+		divisor *= 10;
+	while (divisor > 0) {
+		ft_putnbr_fd(num / divisor, 1);
+		num %= divisor;
+		divisor /= 10;
+		n_written++;
+	}
+	return (n_written);
+}
+
