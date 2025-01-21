@@ -12,20 +12,23 @@ PATH_LIB = libft
 
 SRC = 	ft_printf.c \
 		ft_printf_hex.c \
-		ft_printf_utils.c
+		ft_printf_utils.c \
+		ft_placeholders.c
 
 OBJ = $(SRC:.c=.o)
 #OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 #BONUS_CACHE = .cache
 
-all : $(NAME) 
+all : $(PATH_LIB)/$(NAME_LIB) $(NAME) 
 
 $(NAME) : $(OBJ) $(PATH_LIB)/$(NAME_LIB)
-	$(AR) $(NAME) $(OBJ)
+	cp $(PATH_LIB)/$(NAME_LIB) $(NAME)
+	$(AR) $(NAME) $(OBJ) $(PATH_LIB)/$(NAME_LIB)
 
 $(PATH_LIB)/$(NAME_LIB) :
-	@$(MAKE) -C libtf
+	@$(MAKE) -C $(PATH_LIB)
+
 #$(BONUS_CACHE): $(OBJ_BONUS)
 #	$(AR) $(NAME) $(OBJ_BONUS)
 #	@touch $(BONUS_CACHE)
@@ -34,10 +37,11 @@ $(PATH_LIB)/$(NAME_LIB) :
 
 fclean: clean
 	$(RM) $(NAME) 
+	$(RM) $(PATH_LIB)/$(NAME_LIB) 
 
 clean:
 	$(RM) *.o
-
+	$(RM) $(PATH_LIB)/*.o
 
 re: fclean all
 

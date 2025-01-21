@@ -6,13 +6,13 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:02:09 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/20 20:19:42 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/21 20:05:31 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_digit(long nb)
+static int	ft_digit_hex(long nb)
 {
 	int	iter;
 
@@ -25,57 +25,48 @@ static int	ft_digit(long nb)
 	return (iter);
 }
 
-/*static unsigned char	*ft_check_upper_lower(unsigned char flags)
-{
-	if (flags & IS_HEX_LOWER)
-		return (HEX_LOWER);
-	if (flags & IS_HEX_UPPER)
-		return (HEX_UPPER);
-}*/
-
 static void	ft_fillbytes(int index, char *s)
 {
 	while (index)
 		s[--index] = HEX[15];
 }
 
-static int	ft_convert(long n, char *s, int index, bool is_negative)
+static void	ft_toupper_hex(char *s, int digits)
 {
-	long	mod;
+	int	index;
+
+	index = 0;
+	while (index < digits)
+	{
+		s[index] = ft_toupper(s[index]);
+		index++;
+	}
+	s[index] = '\0';
+	return ;
+}
+
+static void	ft_convert(long n, char *s, int index, bool is_negative)
+{
 	long	num;
+	long	mod;
 
 	num = n / 16;
 	mod = n % 16;
 	if (is_negative)
 		mod = 15 - mod;
-	if (index == 8)
-		mod++;
-	s[--index] = HEX[mod];
-	//printf("%c\n",s[index+1]);
 	if (num > 16)
-		ft_convert(num, s, index, is_negative);
+		ft_convert(num, s, index - 1, is_negative);
 	else
 	{
 		if (is_negative)
 			num = 15 - num;
-		s[--index] = HEX[num];
-		//printf("%c\n",s[index+1]);
+		s[index - 1] = HEX[num];
+		s[index] = HEX[mod];
 		if (is_negative && index > 0)
 			ft_fillbytes(index, s);
 	}
-	return (num);
-}
-
-void	ft_toupper_str(char *s)
-{
-	int	index;
-
-	index = 0;
-	while (s[index])
-	{
-		s[index] = ft_toupper(s[index]);
-		index++;
-	}
+	s[index] = HEX[mod];
+	return ;
 }
 
 char	*ft_atoi_hex(long n, char type)
@@ -92,15 +83,10 @@ char	*ft_atoi_hex(long n, char type)
 		n = -n;
 	}
 	else
-		digits = ft_digit(n);
-	s = ft_calloc(digits, sizeof(char));
-	ft_convert(n, s, digits, is_negative);
+		digits = ft_digit_hex(n);
+	s = ft_calloc(digits - 1, sizeof(char));
+	ft_convert(n, s, digits - 1, is_negative);
 	if (type == 'X')
-		ft_toupper_str(s);
+		ft_toupper_hex(s, digits);
 	return (s);
-}
-char	*ft_memfree(char *ptr)
-{
-	free(ptr);
-	return (NULL);
 }
