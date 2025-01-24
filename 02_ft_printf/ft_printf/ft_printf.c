@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:13:29 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/21 21:00:15 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/24 20:52:34 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,22 @@ int	ft_printf(char const *s, ...)
 {
 	int		cont;
 	int		i;
-	int		j;
 	va_list	vargs;
-	char	*s_aux;
 
 	i = 0;
-	j = 0;
 	cont = 0;
 	va_start(vargs, s);
 	while (s[i])
 	{
 		if (s[i] == '%')
-		{
 			cont += ft_check_placeholder(s, &i, vargs);
+		else
+		{
+			ft_putchar_fd(s[i], 1);
+			cont++;
 		}
 		i++;
-		ft_putchar_fd(s[i], 1);
-		cont++;
 	}
-	(void)j;
-	(void)s_aux;
 	va_end(vargs);
 	return (cont);
 }
@@ -74,10 +70,12 @@ int	ft_placeholder_c(va_list vargs, char type)
 	int	n_written;
 	int	character;
 
+	character = 0;
 	n_written = 1;
-	character = va_arg(vargs, int);
 	if (type == '%')
 		character = '%';
+	else
+		character = va_arg(vargs, int);
 	ft_putchar_fd(character, 1);
 	return (n_written);
 }
@@ -104,10 +102,19 @@ int	ft_placeholder_p(va_list vargs)
 	int				n_written;
 	unsigned long	dir_ptr;
 
+	n_written = 0;
 	dir_ptr = va_arg(vargs, unsigned long );
-	ft_putchar_fd('0', 1);
-	ft_putchar_fd('x', 1);
-	n_written = 2;
-	n_written += ft_print_ptr(ft_atoi_hex((dir_ptr), 'x'));
+	if (dir_ptr != 0)
+	{
+		ft_putchar_fd('0', 1);
+		ft_putchar_fd('x', 1);
+		n_written = 2;
+		n_written += ft_print_ptr(ft_atoi_hex((dir_ptr), 'x'));
+	}
+	else
+	{
+		ft_putstr_fd("(nil)",1);
+		n_written = 5;
+	}
 	return (n_written);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_placeholders.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:49:45 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/21 20:49:58 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/24 19:36:27 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_placeholder_d(va_list vargs)
 	n_written = ft_strlen(str_num);
 	ft_putstr_fd(str_num, 1);
 	str_num = ft_memfree(str_num);
-	return (n_written - 1);
+	return (n_written);
 }
 
 int	ft_placeholder_u(va_list vargs)
