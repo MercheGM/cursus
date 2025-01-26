@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:13:29 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/24 20:52:34 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:41:31 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int	ft_placeholder_p(va_list vargs)
 {
 	int				n_written;
 	unsigned long	dir_ptr;
+	char			*str_aux;
 
 	n_written = 0;
 	dir_ptr = va_arg(vargs, unsigned long );
@@ -109,11 +110,13 @@ int	ft_placeholder_p(va_list vargs)
 		ft_putchar_fd('0', 1);
 		ft_putchar_fd('x', 1);
 		n_written = 2;
-		n_written += ft_print_ptr(ft_atoi_hex((dir_ptr), 'x'));
+		str_aux = ft_atoi_hex((dir_ptr), 'x');
+		n_written += ft_print_ptr(str_aux);
+		str_aux = ft_memfree(str_aux);
 	}
 	else
 	{
-		ft_putstr_fd("(nil)",1);
+		ft_putstr_fd("(nil)", 1);
 		n_written = 5;
 	}
 	return (n_written);

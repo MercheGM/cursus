@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_placeholders.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:49:45 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/24 19:36:27 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:37:44 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int	ft_placeholder_hex(va_list vargs, char type)
 	n_written = 0;
 	num = va_arg(vargs, long);
 	str = ft_atoi_hex(num, type);
-	ft_putstr_fd(str, 1);
 	n_written = ft_strlen(str);
+	ft_putstr_fd(str, 1);
+	str = ft_memfree(str);
 	return (n_written);
 }
