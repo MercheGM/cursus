@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Werror -Wextra -Ilibft
 
 AR = ar rcs
@@ -16,9 +16,6 @@ SRC = 	ft_printf.c \
 		ft_placeholders.c
 
 OBJ = $(SRC:.c=.o)
-#OBJ_BONUS = $(SRC_BONUS:.c=.o)
-
-#BONUS_CACHE = .cache
 
 all : $(PATH_LIB)/$(NAME_LIB) $(NAME) 
 
@@ -28,12 +25,6 @@ $(NAME) : $(OBJ) $(PATH_LIB)/$(NAME_LIB)
 
 $(PATH_LIB)/$(NAME_LIB) :
 	@$(MAKE) -C $(PATH_LIB)
-
-#$(BONUS_CACHE): $(OBJ_BONUS)
-#	$(AR) $(NAME) $(OBJ_BONUS)
-#	@touch $(BONUS_CACHE)
-
-#bonus: $(BONUS_CACHE)
 
 fclean: clean
 	$(RM) $(NAME) 

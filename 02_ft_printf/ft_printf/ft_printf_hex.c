@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:02:09 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/26 21:18:47 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/26 23:23:45 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,31 @@ static int	ft_digit_hex(long nb)
 	return (iter);
 }
 
-static void	ft_fillbytes(int index, char **s)
+static void	ft_fillbytes(int index, char *s)
 {
 	while (index)
-		*s[--index] = HEX[15];
+		s[--index] = HEX[15];
 }
 
-static void	ft_toupper_hex(char **s, int digits)
+static void	ft_toupper_hex(char *s, int digits)
 {
 	int	index;
 
 	index = 0;
 	while (index < digits)
 	{
-		*s[index] = ft_toupper(*s[index]);
+		s[index] = ft_toupper(s[index]);
 		index++;
 	}
-	*s[index] = '\0';
+	s[index] = '\0';
 	return ;
 }
 
-static void	ft_convert(long n, char **s, int index, bool is_negative)
+static void	ft_convert(long n, char *s, int index, bool is_negative)
 {
 	long	num;
 	long	mod;
-	char	*ptr_aux;
-	
-	ptr_aux = *s;
+
 	num = n / 16;
 	mod = n % 16;
 	if (is_negative)
@@ -62,14 +60,12 @@ static void	ft_convert(long n, char **s, int index, bool is_negative)
 	{
 		if (is_negative)
 			num = 15 - num;
-		ptr_aux[index - 1] = HEX[num];
-		//*s[index - 1] = HEX[num];
-		//printf("....%d, %c \n", index - 1, ptr_aux[index - 1] );
+		if (index > 0)
+			s[index - 1] = HEX[num];
 		if (is_negative && index > 0)
 			ft_fillbytes(index, s);
 	}
-	ptr_aux[index] = HEX[mod];
-	//printf("....%d, %c \n", index, ptr_aux[index]);
+	s[index] = HEX[mod];
 	return ;
 }
 
@@ -88,10 +84,9 @@ char	*ft_atoi_hex(long n, char type)
 	}
 	else
 		digits = ft_digit_hex(n);
-	s = ft_calloc(digits, sizeof(char));
-	ft_convert(n, &s, digits - 1, is_negative);
-	//printf("cadena entera: %s, digitos: %d\n", s, digits);
+	s = ft_calloc(digits + 1, sizeof(char));
+	ft_convert(n, s, digits - 1, is_negative);
 	if (type == 'X')
-		ft_toupper_hex(&s, digits);
+		ft_toupper_hex(s, digits);
 	return (s);
 }
