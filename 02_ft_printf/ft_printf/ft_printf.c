@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:13:29 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/26 18:41:31 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:03:24 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ int	ft_check_placeholder(char const *s, int *i, va_list vargs)
 		cont = ft_placeholder_s(vargs);
 	else if (s[*i + 1] == 'p')
 		cont = ft_placeholder_p(vargs);
-	else if (s[*i + 1] == 'd')
-		cont = ft_placeholder_d(vargs);
-	else if (s[*i + 1] == 'i')
+	else if ((s[*i + 1] == 'd') || (s[*i + 1] == 'i'))
 		cont = ft_placeholder_d(vargs);
 	else if (s[*i + 1] == 'u')
 		cont = ft_placeholder_u(vargs);
@@ -70,7 +68,7 @@ int	ft_placeholder_c(va_list vargs, char type)
 	int	n_written;
 	int	character;
 
-	character = 0;
+	character = '\0';
 	n_written = 1;
 	if (type == '%')
 		character = '%';
@@ -88,12 +86,9 @@ int	ft_placeholder_s(va_list vargs)
 
 	n_written = 0;
 	s_aux = va_arg(vargs, char *);
-	while (s_aux[n_written])
-	{
-		ft_putchar_fd(s_aux[n_written], 1);
-		n_written++;
-	}
-	return (n_written);
+	if (s_aux == NULL)
+		return (ft_print_str("(null)"));
+	return (ft_print_str(s_aux));
 }
 
 /*Print a void pointer address in hexadecimal*/
@@ -111,13 +106,10 @@ int	ft_placeholder_p(va_list vargs)
 		ft_putchar_fd('x', 1);
 		n_written = 2;
 		str_aux = ft_atoi_hex((dir_ptr), 'x');
-		n_written += ft_print_ptr(str_aux);
+		n_written += ft_print_str(str_aux);
 		str_aux = ft_memfree(str_aux);
 	}
 	else
-	{
-		ft_putstr_fd("(nil)", 1);
-		n_written = 5;
-	}
+		return (ft_print_str("(nil)"));
 	return (n_written);
 }

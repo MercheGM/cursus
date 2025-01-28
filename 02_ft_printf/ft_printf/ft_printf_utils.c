@@ -6,27 +6,77 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:21:59 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/26 19:22:36 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:08:22 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ptr(char *str)
+/*Print a decimal number*/
+int	ft_placeholder_d(va_list vargs)
+{
+	int		n_written;
+	char	*str_num;
+
+	str_num = ft_itoa(va_arg(vargs, int));
+	n_written = ft_strlen(str_num);
+	ft_putstr_fd(str_num, 1);
+	str_num = ft_memfree(str_num);
+	return (n_written);
+}
+
+int	ft_placeholder_u(va_list vargs)
+{
+	int				n_written;
+	unsigned int	num;
+	unsigned int	divisor;
+
+	n_written = 0;
+	divisor = 1;
+	num = va_arg(vargs, unsigned int);
+	while (num / divisor >= 10)
+		divisor *= 10;
+	while (divisor > 0)
+	{
+		ft_putnbr_fd(num / divisor, 1);
+		num %= divisor;
+		divisor /= 10;
+		n_written++;
+	}
+	return (n_written);
+}
+
+int	ft_placeholder_hex(va_list vargs, char type)
+{
+	char	*str;
+	long	num;
+	int		n_written;
+
+	n_written = 0;
+	num = va_arg(vargs, long);
+	str = ft_atoi_hex(num, type);
+	n_written = ft_strlen(str);
+	ft_putstr_fd(str, 1);
+	str = ft_memfree(str);
+	return (n_written);
+}
+
+/*Print a string and it returns number of character 
+printed*/
+int	ft_print_str(char *str)
 {
 	int		n;
-	//int		len;
 
 	n = 0;
 	while (str[n])
 	{
-		//printf("....%d, %c \n", n, str[n]);
 		ft_putchar_fd(str[n], 1);
 		n++;
 	}
 	return (n);
 }
 
+/*Free memory function*/
 char	*ft_memfree(char *ptr)
 {
 	free(ptr);

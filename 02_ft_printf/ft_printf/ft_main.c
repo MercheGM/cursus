@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 12:19:53 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/26 23:10:42 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:10:14 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	int	cont_ft_printf;
 
 	//Tests de %s
-	/*cont_printf = printf("This is a simple test.");
+	cont_printf = printf("This is a simple test.");
 	cont_ft_printf = ft_printf("This is a simple test.");
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("This is a simple test.\nSecond sentence.\n");
@@ -51,11 +51,14 @@ int	main(void)
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%s%s%s%s%s", "1", "2", "3", "4", "5");
 	cont_ft_printf = ft_printf("%s%s%s%s%s", "1", "2", "3", "4", "5");
-	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);*/
-	
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
+	char *s = NULL;
+	cont_printf = printf("%s", s);
+	cont_ft_printf = ft_printf("%s", s);
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);	
 
 	//Tests de %d
-	/*cont_printf = printf("%d", 42);
+	cont_printf = printf("%d", 42);
 	cont_ft_printf = ft_printf("%d", 42);
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%d", -42);
@@ -72,11 +75,11 @@ int	main(void)
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%d", INT_MIN);
 	cont_ft_printf = ft_printf("%d", INT_MIN);
-	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);*/
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 
 
 	//Tests de %p
-/*	int i;
+	int i;
 	unsigned long l;
 	char *str;
 	cont_printf = printf("%p", &i);
@@ -91,9 +94,9 @@ int	main(void)
 	cont_printf = printf("%p", &strlen);
 	cont_ft_printf = ft_printf("%p", &strlen);
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
-*/
+
 	//Tests de %%
-	/*cont_printf = printf("%%");
+	cont_printf = printf("%%");
 	cont_ft_printf = ft_printf("%%");
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("aa%%bb");
@@ -105,17 +108,17 @@ int	main(void)
 	cont_printf = printf(".%%.%%.%%.%%.%%.%%.%%.%%.");
 	cont_ft_printf = ft_printf(".%%.%%.%%.%%.%%.%%.%%.%%.");
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
-*/
+
 	//Test moulitest 06
-	/*cont_printf = printf("s: %s, p: %p, d:%d", "a string", &ft_check_placeholder, 42);
+	cont_printf = printf("s: %s, p: %p, d:%d", "a string", &ft_check_placeholder, 42);
 	cont_ft_printf = ft_printf("s: %s, p: %p, d:%d", "a string", &ft_check_placeholder, 42);
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%s%p%d%d%p%s%p%p%s", "a", &free, 1, 2, &malloc, "b", &free, &malloc, "c");
 	cont_ft_printf = ft_printf("%s%p%d%d%p%s%p%p%s", "a", &free, 1, 2, &malloc, "b", &free, &malloc, "c");
-	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);*/
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 
 	//Tests de %i
-	/*cont_printf = printf("%i", 42);
+	cont_printf = printf("%i", 42);
 	cont_ft_printf = ft_printf("%i", 42);
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%i", -42);
@@ -129,11 +132,11 @@ int	main(void)
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%i%i%i%i%i", 1, -2, 3, -4, 5);
 	cont_ft_printf = ft_printf("%i%i%i%i%i", 1, -2, 3, -4, 5);
-	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);*/
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 
 
 	//Tests de %u
-	/*cont_printf = printf("%u", 42);
+	cont_printf = printf("%u", 42);
 	cont_ft_printf = ft_printf("%u", 42);
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("before %u after", 42);
@@ -147,10 +150,10 @@ int	main(void)
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%u", UINT_MAX);
 	cont_ft_printf = ft_printf("%u", UINT_MAX);
-	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);*/
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	
 	//Tests de %x
-	/*cont_printf = printf("%x", 42);
+	cont_printf = printf("%x", 42);
 	cont_ft_printf = ft_printf("%x", 42);
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("before %x after", 42);
@@ -164,7 +167,7 @@ int	main(void)
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%x, %x", 0, UINT_MAX);
 	cont_ft_printf = ft_printf("%x, %x", 0, UINT_MAX);
-	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);*/
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 
 	//Tests de %X
 	cont_printf = printf("%X", 42);
@@ -184,7 +187,7 @@ int	main(void)
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 
 	//Tests de %C
-	/*cont_printf = printf("%c", 'c');
+	cont_printf = printf("%c", 'c');
 	cont_ft_printf = ft_printf("%c", 'c');
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%c%c", '4', '2');
@@ -192,10 +195,10 @@ int	main(void)
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 	cont_printf = printf("%c", 0);
 	cont_ft_printf = ft_printf("%c", 0);
-	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);*/
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 
 	//Otros tests
-	/*int ncm_p = 5;
+	int ncm_p = 5;
 	cont_printf = printf("%p", &ncm_p);
 	cont_ft_printf = ft_printf("%p", &ncm_p);
 	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
@@ -206,7 +209,7 @@ int	main(void)
 
 	cont_printf = printf("%%%c", 'x');
 	cont_ft_printf = ft_printf("%%%c", 'x');
-	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);*/
+	printf("\n***1: %d ***\n***2: %d ***\n---------------\n", cont_printf, cont_ft_printf);
 
 	//++++++++++++++++++Probar en 42+++++++++++++
 	/* cont_printf = printf("  %X %X %lX %lX %lX %X %X", \
