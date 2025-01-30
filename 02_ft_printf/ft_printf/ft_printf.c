@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 11:13:29 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/28 17:03:24 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:09:56 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,8 @@ int	ft_placeholder_c(va_list vargs, char type)
 /*Print an array of character*/
 int	ft_placeholder_s(va_list vargs)
 {
-	int		n_written;
 	char	*s_aux;
 
-	n_written = 0;
 	s_aux = va_arg(vargs, char *);
 	if (s_aux == NULL)
 		return (ft_print_str("(null)"));
@@ -105,7 +103,7 @@ int	ft_placeholder_p(va_list vargs)
 		ft_putchar_fd('0', 1);
 		ft_putchar_fd('x', 1);
 		n_written = 2;
-		str_aux = ft_atoi_hex((dir_ptr), 'x');
+		str_aux = ft_atoi_hex((dir_ptr), 'p');
 		n_written += ft_print_str(str_aux);
 		str_aux = ft_memfree(str_aux);
 	}

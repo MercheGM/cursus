@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:02:09 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/26 23:23:45 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:38:08 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_toupper_hex(char *s, int digits)
 	return ;
 }
 
-static void	ft_convert(long n, char *s, int index, bool is_negative)
+static void	ft_convert(long int n, char *s, int index, bool is_negative)
 {
 	long	num;
 	long	mod;
@@ -60,16 +60,16 @@ static void	ft_convert(long n, char *s, int index, bool is_negative)
 	{
 		if (is_negative)
 			num = 15 - num;
-		if (index > 0)
-			s[index - 1] = HEX[num];
 		if (is_negative && index > 0)
 			ft_fillbytes(index, s);
+		if (index > 0)
+			s[index - 1] = HEX[num];
 	}
 	s[index] = HEX[mod];
 	return ;
 }
 
-char	*ft_atoi_hex(long n, char type)
+char	*ft_atoi_hex(long int n, char type)
 {
 	int		digits;
 	char	*s;
@@ -80,7 +80,7 @@ char	*ft_atoi_hex(long n, char type)
 	{
 		is_negative = true;
 		digits = 8;
-		n = -n;
+		n = -(n + 1);
 	}
 	else
 		digits = ft_digit_hex(n);

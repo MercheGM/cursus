@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:21:59 by mergarci          #+#    #+#             */
-/*   Updated: 2025/01/28 17:08:22 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:39:25 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,21 @@ int	ft_placeholder_u(va_list vargs)
 
 int	ft_placeholder_hex(va_list vargs, char type)
 {
-	char	*str;
-	long	num;
-	int		n_written;
+	char		*str;
+	long int	num;
+	int			n_written;
 
 	n_written = 0;
-	num = va_arg(vargs, long);
+	num = (long int)va_arg(vargs, long int);
+	if (num == LONG_MIN)
+		num = 0;
 	str = ft_atoi_hex(num, type);
 	n_written = ft_strlen(str);
+	if (((type == 'X') || (type == 'x')) && n_written > 8)
+	{
+		str = ft_substr(str, 8, 10);
+		n_written = ft_strlen(str);
+	}
 	ft_putstr_fd(str, 1);
 	str = ft_memfree(str);
 	return (n_written);
